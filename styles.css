@@ -217,6 +217,19 @@ body {
     }
 }
 
+.deleted-form{
+    animation-duration: 0.25s;
+    animation-name: delete-form;
+}
+
+@keyframes delete-form {
+    from {
+        opacity: 100;
+    }
+    to {
+        opacity: 0;
+    }
+}
 /* #myForm {
     transition: display 2s, display 2s;
 }

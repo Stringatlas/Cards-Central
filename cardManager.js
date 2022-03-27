@@ -142,6 +142,13 @@ function EditCard(){
 
     editedImagePreview.src = "";
 
+    document.getElementById("cTitE").value = "";
+    document.getElementById("cTypeE").value = "";
+    document.getElementById("cPlayerE").value = "";
+    document.getElementById("cYearE").value = "";
+    document.getElementById("cOtherE").value = "";
+    document.getElementById("imageUploadE").value = "";
+
     closeEditForm();
 }
 
@@ -218,15 +225,23 @@ function openForm() {
     document.getElementById("myForm").style.opacity = "1";
 }
 
+let closedForm = false;
 function closeForm() {
-    document.getElementById("cTit").value = "";
-    document.getElementById("cType").value = "";
-    document.getElementById("cPlayer").value = "";
-    document.getElementById("cYear").value = "";
-    document.getElementById("msg").value = "";
-    document.getElementById("imageUpload").value = "";
-    document.getElementById("myForm").style.visibility = "hidden";
-    document.getElementById("myForm").style.opacity = "0";
+    console.log("close");
+    const addForm = document.getElementById("myForm");
+    addForm.classList.add("deleted-form");
+    
+
+    if (!closedForm){
+        addForm.addEventListener("animationend", function(){
+            console.log("closed");
+            addForm.style.visibility = "hidden"; 
+            addForm.style.opacity = 0;
+            addForm.classList.remove("deleted-form");
+            closedForm = true;
+        })
+    }
+
 }
 
 function openEditForm(buttonElement){
@@ -252,14 +267,24 @@ function openEditForm(buttonElement){
     editCardCaller = cardDiv;
 }
 
+let hasClosedEditForm = false;
+
 function closeEditForm(){
-    document.getElementById("cTitE").value = "";
-    document.getElementById("cTypeE").value = "";
-    document.getElementById("cPlayerE").value = "";
-    document.getElementById("cYearE").value = "";
-    document.getElementById("cOtherE").value = "";
-    document.getElementById("imageUploadE").value = "";
-    document.getElementById("editform").style.visibility = "hidden";
-    document.getElementById("editform").style.opacity = "0";
+    console.log("close");
+    const editWindow = document.getElementById("editform");
+    editWindow.classList.add("deleted-form")
+    
+
+    if (!hasClosedEditForm){
+        editWindow.addEventListener("animationend", function(){
+            console.log("closed");
+            editWindow.style.visibility = "hidden";
+            editWindow.style.opacity = 0;
+            editWindow.classList.remove("deleted-form");
+            hasClosedEditForm = true;
+        })
+    }
+
+
 }
 
